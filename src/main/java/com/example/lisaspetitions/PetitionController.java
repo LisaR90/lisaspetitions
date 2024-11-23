@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 @Controller
 public class PetitionController {
@@ -35,6 +35,32 @@ public class PetitionController {
         return "create";
     }
 
+    @PostMapping("/create")
+    public String createPetition(
+            @RequestParam String title,
+            @RequestParam String description,
+            @RequestParam String creatorName) {
+        String id = String.valueOf(petitions.size() + 1);
+        petitions.add(new Petition(id, title, description, creatorName));
+        return "redirect:/petitions";
+    }
+
+    // View a specific petition and sign it
+    @GetMapping("/petition")
+    public String viewPetition(@RequestParam String id, Model model) {
+        Optional<Petition> petitionOpt = petitions.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+
+        if (petitionOpt.isPresent()) {
+            model.addAttribute("petition", petitionOpt.get());
+        } else {
+            model.addAttribute("errorMessage", "Petition not found");
+            return "error"; // Add an error page if the petition is not found
+        }
+        return "view-petition";
+    }
+
     // Search for petitions page
     @GetMapping("/search")
     public String searchPage() {
@@ -54,15 +80,16 @@ public class PetitionController {
     }
 
 
+    @PostMapping("/sign")
+    public String signPetition(@RequestParam String id) {
+        Petition petition = petitions.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst()
+                .orElse(null);
 
-    @PostMapping("/create")
-    public String createPetition(
-            @RequestParam String title,
-            @RequestParam String description,
-            @RequestParam String creatorName) {
-        String id = String.valueOf(petitions.size() + 1);
-        petitions.add(new Petition(id, title, description, creatorName));
+        if (petition != null) {
+            petition.addSignature();
+        }
         return "redirect:/petitions";
     }
-
 }

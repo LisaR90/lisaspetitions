@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Petition</title>
+</head>
+<body>
+<h1 th:text="${petition.title}"></h1>
+<p th:text="${petition.description}"></p>
+<p>Created by: <span th:text="${petition.creatorName}"></span></p>
+<p>Signatures: <span th:text="${petition.signatures}"></span></p>
+
+<form action="/sign" method="post">
+    <input type="hidden" name="id" th:value="${petition.id}">
+    <button type="submit">Sign this petition</button>
+</form>
+<a href="/petitions">Back to all petitions</a>
+</body>
+</html>

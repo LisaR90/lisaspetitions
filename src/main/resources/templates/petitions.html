@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Petitions</title>
+</head>
+<body>
+<h1>Petitions</h1>
+<ul>
+    <th:block th:each="petition : ${petitions}">
+        <li>
+            <a th:href="@{/petition(id=${petition.id})}" th:text="${petition.title}"></a>
+            - <span th:text="${petition.signatures}"></span> signatures
+        </li>
+    </th:block>
+</ul>
+
+<!-- Link to create a new petition -->
+<a href="/create">Create a New Petition</a> |
+<!-- Link to search for a petition -->
+<a href="/search">Search for a Petition</a>
+
+</body>
+</html>

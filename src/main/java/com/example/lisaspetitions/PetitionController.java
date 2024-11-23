@@ -35,6 +35,26 @@ public class PetitionController {
         return "create";
     }
 
+    // Search for petitions page
+    @GetMapping("/search")
+    public String searchPage() {
+        return "search";
+    }
+
+    @PostMapping("/search")
+    public String searchPetitions(@RequestParam String keyword, Model model) {
+        List<Petition> searchResults = petitions.stream()
+                .filter(p -> p.getTitle().toLowerCase().contains(keyword.toLowerCase()) ||
+                        p.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .toList();
+
+        model.addAttribute("searchResults", searchResults);
+        model.addAttribute("keyword", keyword);
+        return "search-results";
+    }
+
+
+
     @PostMapping("/create")
     public String createPetition(
             @RequestParam String title,

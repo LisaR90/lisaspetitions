@@ -5,10 +5,10 @@
 </head>
 <body>
 <h1>Search Petitions</h1>
-<form action="/search" method="post">
+<form th:action="@{/search}" method="post">
     <label>Keyword: <input type="text" name="keyword"></label>
     <button type="submit">Search</button>
 </form>
-<a href="@{/petitions}">Back to all petitions</a>
+<a th:href="@{/petitions}">Back to all petitions</a>
 </body>
 </html>

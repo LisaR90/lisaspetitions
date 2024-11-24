@@ -43,7 +43,6 @@ pipeline {
 
     post {
         always {
-            // Notify that the pipeline has finished
             echo 'Pipeline finished!'
         }
     }

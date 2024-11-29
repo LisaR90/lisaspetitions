@@ -9,10 +9,10 @@
 <p>Created by: <span th:text="${petition.creatorName}"></span></p>
 <p>Signatures: <span th:text="${petition.signatures}"></span></p>
 
-<form th:action="@{${#request.contextPath}/sign}" method="post">
+<form th:action="@{$/sign}" method="post">
     <input type="hidden" name="id" th:value="${petition.id}">
     <button type="submit">Sign this petition</button>
 </form>
-<a th:href="@{${#request.contextPath}/petitions}">Back to all petitions</a>
+<a th:href="@{$/petitions}">Back to all petitions</a>
 </body>
 </html>

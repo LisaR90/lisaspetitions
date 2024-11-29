@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Create a Petition</h1>
-<form th:action="@{${#request.contextPath}/create}" method="post">
+<form th:action="@{${/create}" method="post">
 
     <label>Title: <input type="text" name="title"></label><br>
     <label>Description: <textarea name="description"></textarea></label><br>

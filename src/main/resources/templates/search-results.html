@@ -12,11 +12,11 @@
   </th:block>
   <th:block th:each="petition : ${searchResults}">
     <li>
-      <a th:href="@{${#request.contextPath}/petition(id=${petition.id})}" th:text="${petition.title}"></a>
+      <a th:href="@{$/petition(id=${petition.id})}" th:text="${petition.title}"></a>
       - <span th:text="${petition.signatures}"></span> signatures
     </li>
   </th:block>
 </ul>
-<a th:href="@{${#request.contextPath}/search}">New Search</a> | <a th:href="@{${#request.contextPath}/petitions}">Back to all petitions</a>
+<a th:href="@{$/search}">New Search</a> | <a th:href="@{$/petitions}">Back to all petitions</a>
 </body>
 </html>

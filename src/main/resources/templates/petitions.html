@@ -8,15 +8,15 @@
 <ul>
     <th:block th:each="petition : ${petitions}">
         <li>
-            <a th:href="@{${#request.contextPath}/petition(id=${petition.id})}" th:text="${petition.title}"></a>
+            <a th:href="@{$/petition(id=${petition.id})}" th:text="${petition.title}"></a>
             - <span th:text="${petition.signatures}"></span> signatures
         </li>
     </th:block>
 </ul>
 
-<a th:href="@{${#request.contextPath}/create}">Create a New Petition</a> |
+<a th:href="@{$/create}">Create a New Petition</a> |
 
-<a th:href="@{${#request.contextPath}/search}">Search for a Petition</a>
+<a th:href="@{$/search}">Search for a Petition</a>
 
 </body>
 </html>

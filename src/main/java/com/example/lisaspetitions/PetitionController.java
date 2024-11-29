@@ -19,6 +19,7 @@ public class PetitionController {
         petitions.add(new Petition("1", "Save the Forest", "Help protect our forests!", "Lisa"));
         petitions.add(new Petition("2", "Clean the Oceans", "Reduce plastic waste in oceans", "Steve"));
         petitions.add(new Petition("3", "Animal Rights", "Support animal protection laws", "Lily"));
+        petitions.add(new Petition("4", "Increase Education Funding", "Demand better funding for schools, teachers, and students to improve education quality", "Bob"));
     }
 
     // View all petitions

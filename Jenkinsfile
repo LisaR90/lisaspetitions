@@ -20,6 +20,7 @@ pipeline {
         stage('Package') {
             steps {
                 sh 'mvn package'
+                sh 'ls target/*.war'
             }
         }
         stage('Archive') {

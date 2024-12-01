@@ -22,8 +22,6 @@ public class PetitionController {
         petitions.add(new Petition("4", "Increase Education Funding", "Demand better funding for schools, teachers, and students to improve education quality", "Bob"));
         petitions.add(new Petition("5", "Stop Cyberbullying!", "Help us stop cyberbullying today", "Billy"));
         petitions.add(new Petition("6", "Stop Polluting", "Help stop pollution now", "Bobby"));
-
-
     }
 
     // View all petitions
@@ -32,7 +30,6 @@ public class PetitionController {
         model.addAttribute("petitions", petitions);
         return "petitions.html"; // Explicitly specify the file extension
     }
-
 
     // Create a new petition page
     @GetMapping("/create")
@@ -84,16 +81,17 @@ public class PetitionController {
         return "search-results";
     }
 
-
     @PostMapping("/sign")
-    public String signPetition(@RequestParam String id) {
+    public String signPetition(@RequestParam String id,
+                               @RequestParam String name,
+                               @RequestParam String email) {
         Petition petition = petitions.stream()
                 .filter(p -> p.getId().equals(id))
                 .findFirst()
                 .orElse(null);
 
         if (petition != null) {
-            petition.addSignature();
+            petition.addSignature(name, email);
         }
         return "redirect:/petitions";
     }

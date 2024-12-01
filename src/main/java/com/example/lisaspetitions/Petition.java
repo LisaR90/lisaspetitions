@@ -1,11 +1,16 @@
 package com.example.lisaspetitions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Petition {
     private String id;
     private String title;
     private String description;
     private String creatorName;
     private int signatures;
+    private List<String> signers; // List to store names of signers
+    private List<String> emails; // List to store emails of signers
 
     // Constructor
     public Petition(String id, String title, String description, String creatorName) {
@@ -14,6 +19,8 @@ public class Petition {
         this.description = description;
         this.creatorName = creatorName;
         this.signatures = 0;
+        this.signers = new ArrayList<>();
+        this.emails = new ArrayList<>();
     }
 
     // Getters and Setters
@@ -37,8 +44,18 @@ public class Petition {
         return signatures;
     }
 
-    public void addSignature() {
+    public List<String> getSigners() {
+        return signers;
+    }
+
+    public List<String> getEmails() {
+        return emails;
+    }
+
+    public void addSignature(String signerName, String email) {
         this.signatures++;
+        this.signers.add(signerName);
+        this.emails.add(email);
     }
 
     @Override

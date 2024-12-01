@@ -9,8 +9,8 @@ public class Petition {
     private String description;
     private String creatorName;
     private int signatures;
-    private List<String> signers; // List to store names of signers
-    private List<String> emails; // List to store emails of signers
+    private List<String> signers;
+    private List<String> emails;
 
     // Constructor
     public Petition(String id, String title, String description, String creatorName) {
